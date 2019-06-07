@@ -1,0 +1,14 @@
+Bundle-SymbolicName: reference.dxp.web
+Bundle-Version: 1.0.0
+Liferay-JS-Config: /META-INF/resources/js/config.js
+Export-Package: \
+	hu.webtown.liferay.portlet.reference.web.application.list,\
+	hu.webtown.liferay.portlet.reference.web.asset,\
+	hu.webtown.liferay.portlet.reference.web.configuration,\
+	hu.webtown.liferay.portlet.reference.web.custom.attributes,\
+	hu.webtown.liferay.portlet.reference.web.display.context,\
+	hu.webtown.liferay.portlet.reference.web.portlet,\
+	hu.webtown.liferay.portlet.reference.web.portlet.action,\
+	hu.webtown.liferay.portlet.reference.web.search,\
+	hu.webtown.liferay.portlet.reference.web.servlet.taglib.ui,\
+	hu.webtown.liferay.portlet.reference.web.util

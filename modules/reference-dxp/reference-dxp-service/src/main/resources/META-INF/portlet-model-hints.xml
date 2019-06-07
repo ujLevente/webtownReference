@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="hu.webtown.liferay.portlet.reference.model.Reference">
+		<field name="uuid" type="String" />
+		<field name="id" type="long" />
+		<field name="resourcePrimKey" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="referenceId" type="String">
+			<hint name="upper-case">true</hint>
+		</field>
+		<field name="version" type="double" />
+		<field name="name" type="String">
+			<hint name="max-length">255</hint>
+		</field>
+		<field name="urlTitle" type="String">
+			<hint name="max-length">255</hint>
+		</field>
+		<field name="shortDescription" type="String">
+			<hint-collection name="CLOB" />
+		</field>
+		<field name="description" type="String">
+			<hint-collection name="CLOB" />
+		</field>
+		<field name="realizationDate" type="Date" />
+		<field name="emphasized" type="boolean" />
+		<field name="overlayText" type="String">
+			<hint name="max-length">255</hint>
+		</field>
+		<field name="overlayUrl" type="String">
+			<hint name="max-length">255</hint>
+		</field>
+		<field name="lastPublishDate" type="Date" />
+		<field name="status" type="int" />
+		<field name="statusByUserId" type="long" />
+		<field name="statusByUserName" type="String" />
+		<field name="statusDate" type="Date" />
+	</model>
+	<model name="hu.webtown.liferay.portlet.reference.model.ReferenceImage">
+		<field name="uuid" type="String" />
+		<field name="referenceImageId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="referenceId" type="String" />
+		<field name="version" type="double" />
+		<field name="imageType" type="int" />
+		<field name="image" type="String">
+			<hint name="max-length">2000</hint>
+		</field>
+	</model>
+	<model name="hu.webtown.liferay.portlet.reference.model.ReferenceResource">
+		<field name="uuid" type="String" />
+		<field name="resourcePrimKey" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="referenceId" type="String" />
+	</model>
+</model-hints>

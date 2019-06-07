@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<custom-sql>
+	<sql id="hu.webtown.liferay.portlet.reference.service.persistence.ReferenceFinder.countByC_G_R_V_N_S_D_R_S">
+		<![CDATA[
+			SELECT
+				COUNT(DISTINCT Reference.referenceId) AS COUNT_VALUE
+			FROM
+				Reference
+			LEFT JOIN Reference tempReference ON
+				[$STATUS_JOIN$] AND
+				(Reference.groupId = tempReference.groupId) AND
+				(Reference.referenceId = tempReference.referenceId) AND
+				(Reference.version < tempReference.version)
+			WHERE
+				(Reference.companyId = ?) AND
+				(Reference.groupId = ?) AND
+				([$STATUS$]) AND
+				(tempReference.id_ IS NULL) AND
+				(
+					(Reference.referenceId LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
+					(Reference.version = ?) [$AND_OR_CONNECTOR$]
+					(lower(Reference.name) LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
+					(Reference.shortDescription LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
+					(Reference.description LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
+					(Reference.realizationDate >= ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
+					(Reference.realizationDate <= ? [$AND_OR_NULL_CHECK$])
+				)
+        ]]>
+    </sql>
+    <sql id="hu.webtown.liferay.portlet.reference.service.persistence.ReferenceFinder.countByGroupId">
+    	<![CDATA[
+    		SELECT
+    			COUNT(DISTINCT Reference.referenceId) AS COUNT_VALUE
+   			FROM
+   				Reference
+			LEFT JOIN Reference tempReference ON
+				[$STATUS_JOIN$] AND
+				(Reference.groupId = tempReference.groupId) AND
+				(Reference.referenceId = tempReference.referenceId) AND
+				(Reference.version < tempReference.version)
+			WHERE
+				(Reference.groupId = ?) AND
+				([$STATUS$]) AND
+				(tempReference.id_ IS NULL)
+    	]]>
+    </sql>
+	<sql id="hu.webtown.liferay.portlet.reference.service.persistence.ReferenceFinder.findByC_G_R_V_N_S_D_R_S">
+		<![CDATA[
+			SELECT
+				Reference.*
+			FROM
+				Reference
+			LEFT JOIN Reference tempReference ON
+				[$STATUS_JOIN$] AND
+				(Reference.groupId = tempReference.groupId) AND
+				(Reference.referenceId = tempReference.referenceId) AND
+				(Reference.version < tempReference.version)
+			WHERE
+				(Reference.companyId = ?) AND
+				(Reference.groupId = ?) AND
+				([$STATUS$]) AND
+				(tempReference.id_ IS NULL) AND
+				(
+					(Reference.referenceId LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
+					(Reference.version = ?) [$AND_OR_CONNECTOR$]
+					(lower(Reference.name) LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
+					(Reference.shortDescription LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
+					(Reference.description LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
+					(Reference.realizationDate >= ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
+					(Reference.realizationDate <= ? [$AND_OR_NULL_CHECK$])
+				)
+			ORDER BY
+				Reference.id_ ASC
+        ]]>
+    </sql>
+    <sql id="hu.webtown.liferay.portlet.reference.service.persistence.ReferenceFinder.findByGroupId">
+    	<![CDATA[
+    		SELECT
+    			Reference.*
+   			FROM
+   				Reference
+			LEFT JOIN Reference tempReference ON
+				[$STATUS_JOIN$] AND
+				(Reference.groupId = tempReference.groupId) AND
+				(Reference.referenceId = tempReference.referenceId) AND
+				(Reference.version < tempReference.version)
+			WHERE
+				(Reference.groupId = ?) AND
+				([$STATUS$]) AND
+				(tempReference.id_ IS NULL)
+			GROUP BY
+				Reference.id_
+			ORDER BY
+				Reference.id_ ASC
+    	]]>
+    </sql>
+    <sql id="hu.webtown.liferay.portlet.reference.service.persistence.ReferenceFinder.findByNoAssets">
+		<![CDATA[
+			SELECT
+				{Reference.*}
+			FROM
+				Reference
+			LEFT JOIN
+				AssetEntry ON
+					(AssetEntry.classPK = Reference.resourcePrimKey)
+			WHERE
+				AssetEntry.classPK IS NULL
+		]]>
+	</sql>
+    <sql id="hu.webtown.liferay.portlet.reference.service.persistence.ReferenceFinder.findByNoPermissions">
+		<![CDATA[
+			SELECT
+				{Reference.*}
+			FROM
+				Reference
+			LEFT JOIN
+				ResourcePermission ON
+					(ResourcePermission.companyId = Reference.companyId) AND
+					(ResourcePermission.name = 'hu.webtown.liferay.portlet.reference.model.Reference') AND
+					(ResourcePermission.primKey = CAST_TEXT(Reference.resourcePrimKey)) AND
+					(ResourcePermission.scope = ?)
+			WHERE
+				ResourcePermission.primKey IS NULL
+		]]>
+	</sql>
+    <sql id="hu.webtown.liferay.portlet.reference.service.persistence.ReferenceFinder.findByRealizationDate">
+		<![CDATA[
+			SELECT
+				{Reference.*}
+			FROM
+				Reference
+			WHERE
+				(Reference.realizationDate >= ?) AND
+				(Reference.realizationDate <= ?)
+		]]>
+	</sql>
+</custom-sql>

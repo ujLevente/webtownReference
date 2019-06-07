@@ -1,0 +1,13 @@
+Bundle-SymbolicName: reference.dxp.api
+Bundle-Version: 1.0.0
+Export-Package: \
+	hu.webtown.liferay.portlet.reference.constants,\
+	hu.webtown.liferay.portlet.reference.exception,\
+	hu.webtown.liferay.portlet.reference.model,\
+	hu.webtown.liferay.portlet.reference.service,\
+	hu.webtown.liferay.portlet.reference.service.persistence,\
+	hu.webtown.liferay.portlet.reference.util.comparator
+Import-Package:\
+	com.liferay.portal.kernel.model;version="[1.0,2.1)",\
+	\
+	*

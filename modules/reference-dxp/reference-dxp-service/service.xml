@@ -1,0 +1,216 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.0.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_0_0.dtd">
+
+<service-builder auto-namespace-tables="false" package-path="hu.webtown.liferay.portlet.reference">
+	<namespace>Reference</namespace>
+	<entity local-service="true" name="Reference" remote-service="true" trash-enabled="true" uuid="true">
+
+		<!-- PK fields -->
+
+		<column name="id" primary="true" type="long" />
+		
+		<!-- Resource -->
+		
+		<column filter-primary="true" name="resourcePrimKey" type="long" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+
+		<column accessor="true" name="referenceId" type="String" />
+        <column name="version" type="double" />
+        <column name="name" type="String" />
+        <column name="urlTitle" type="String" />
+        <column name="shortDescription" type="String" />
+        <column name="description" type="String" />
+        <column name="realizationDate" type="Date" />
+        <column name="emphasized" type="boolean" />
+        <column name="overlayText" type="String" />
+        <column name="overlayUrl" type="String" />
+        <column name="lastPublishDate" type="Date" />
+        <column name="status" type="int" />
+        <column name="statusByUserId" type="long" />
+        <column name="statusByUserName" type="String" />
+        <column name="statusDate" type="Date" />
+
+		<!-- Order -->
+
+        <order>
+            <order-column name="referenceId" order-by="asc" />
+            <order-column name="version" order-by="desc" />
+        </order>
+
+		<!-- Finder methods -->
+
+<!-- 		<finder name="ResourcePrimKey" return-type="Collection"> -->
+<!--             <finder-column name="resourcePrimKey" /> -->
+<!--         </finder> -->
+        <finder name="GroupId" return-type="Collection">
+            <finder-column name="groupId" />
+        </finder>
+        <finder name="CompanyId" return-type="Collection">
+            <finder-column name="companyId" />
+        </finder>
+        <finder name="R_S" return-type="Collection">
+			<finder-column name="resourcePrimKey" />
+			<finder-column arrayable-operator="OR" name="status" />
+		</finder>
+		<finder name="G_U" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column name="userId" />
+		</finder>
+		<finder name="G_R" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column name="referenceId" />
+		</finder>
+		<finder name="G_UT" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column name="urlTitle" />
+		</finder>
+		<finder name="G_ST" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column name="status" />
+		</finder>
+		<finder name="C_V" return-type="Collection">
+			<finder-column name="companyId" />
+			<finder-column name="version" />
+		</finder>
+		<finder name="C_ST" return-type="Collection">
+			<finder-column name="companyId" />
+			<finder-column name="status" />
+		</finder>
+		<finder name="C_NotST" return-type="Collection">
+			<finder-column name="companyId" />
+			<finder-column comparator="!=" name="status" />
+		</finder>
+		<finder name="G_R_V" return-type="JournalArticle" unique="true">
+			<finder-column name="groupId" />
+			<finder-column name="referenceId" />
+			<finder-column name="version" />
+		</finder>
+		<finder name="G_R_ST" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column name="referenceId" />
+			<finder-column arrayable-operator="OR" name="status" />
+		</finder>
+		<finder name="G_R_NotST" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column name="referenceId" />
+			<finder-column comparator="!=" name="status" />
+		</finder>
+		<finder name="G_UT_ST" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column name="urlTitle" />
+			<finder-column name="status" />
+		</finder>
+		<finder name="C_V_ST" return-type="Collection">
+			<finder-column name="companyId" />
+			<finder-column name="version" />
+			<finder-column name="status" />
+		</finder>
+
+		<!-- References -->
+
+		<reference entity="Group" package-path="com.liferay.portal" />
+		<reference entity="SystemEvent" package-path="com.liferay.portal" />
+		<reference entity="WorkflowDefinitionLink" package-path="com.liferay.portal" />
+		<reference entity="WorkflowInstanceLink" package-path="com.liferay.portal" />
+		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetLink" package-path="com.liferay.portlet.asset" />
+		<reference entity="ExpandoRow" package-path="com.liferay.portlet.expando" />
+		<reference entity="TrashEntry" package-path="com.liferay.portlet.trash" />
+		<reference entity="TrashVersion" package-path="com.liferay.portlet.trash" />
+	</entity>
+	<entity name="ReferenceImage" local-service="true" remote-service="false" uuid="true">
+    
+        <!-- PK fields -->
+        
+        <column name="referenceImageId" primary="true" type="long" />
+        
+        <!-- Group instance -->
+
+        <column name="groupId" type="long" />
+        
+        <!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+        
+        <!-- FK fields -->
+        
+        <column name="referenceId" type="String" />
+        <column name="version" type="double" />
+        
+        <!-- Other fields -->
+        
+        <column name="imageType" type="int" />
+        <column name="image" type="String" />
+        
+        <!-- Finder methods -->
+
+        <finder name="GroupId" return-type="Collection">
+            <finder-column name="groupId" />
+        </finder>
+        
+        <finder name="G_R_V" return-type="Collection">
+            <finder-column name="groupId" />
+            <finder-column name="referenceId" />
+            <finder-column name="version" />
+        </finder>
+        
+        <finder name="G_R_V_I" return-type="Collection">
+            <finder-column name="groupId" />
+            <finder-column name="referenceId" />
+            <finder-column name="version" />
+            <finder-column name="imageType" />
+        </finder>
+    </entity>
+    <entity name="ReferenceResource" local-service="true" remote-service="false" uuid="true">
+
+        <!-- PK fields -->
+
+        <column name="resourcePrimKey" type="long" primary="true" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+        
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+
+        <!-- Other fields -->
+
+        <column name="referenceId" type="String" />
+
+        <!-- Finder methods -->
+
+        <finder name="GroupId" return-type="Collection">
+            <finder-column name="groupId" />
+        </finder>
+        <finder name="G_R" return-type="ReferenceResource" unique="true">
+            <finder-column name="groupId" />
+            <finder-column name="referenceId" />
+        </finder>
+    </entity>
+    <exceptions>
+        <exception>ReferenceDescription</exception>
+        <exception>ReferenceId</exception>
+        <exception>ReferenceName</exception>
+        <exception>ReferenceRealizationDate</exception>
+        <exception>ReferenceShortDescription</exception>
+        <exception>ReferenceUrlTitle</exception>
+        <exception>ReferenceVersion</exception>
+        <exception>DuplicateReferenceId</exception>
+        <exception>DuplicateUrlTitle</exception>
+    </exceptions>
+</service-builder>

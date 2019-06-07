@@ -1,0 +1,15 @@
+Bundle-SymbolicName: reference.dxp.service
+Bundle-Version: 1.0.0
+Liferay-Require-SchemaVersion: 1.0.0
+Liferay-Service: true
+Export-Package: \
+	hu.webtown.liferay.portlet.reference.lar,\
+	hu.webtown.liferay.portlet.reference.model.impl,\
+	hu.webtown.liferay.portlet.reference.search,\
+	hu.webtown.liferay.portlet.reference.service.impl,\
+	hu.webtown.liferay.portlet.reference.service.permission,\
+	hu.webtown.liferay.portlet.reference.service.persistence.impl,\
+	hu.webtown.liferay.portlet.reference.trash,\
+	hu.webtown.liferay.portlet.reference.util,\
+	hu.webtown.liferay.portlet.reference.workflow,\
+	hu.webtown.liferay.portlet.reference.xstream.configurator

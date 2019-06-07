@@ -1,0 +1,22 @@
+<liferay-frontend:vertical-card-sticker-bottom>
+	<liferay-ui:user-portrait
+		cssClass="sticker sticker-bottom"
+		imageCssClass="user-icon-lg"
+		userId="<%= reference.getUserId() %>"
+	/>
+</liferay-frontend:vertical-card-sticker-bottom>
+
+<liferay-frontend:vertical-card-header>
+
+	<%
+	Date createDate = reference.getModifiedDate();
+
+	String modifiedDateDescription = LanguageUtil.getTimeDescription(request, System.currentTimeMillis() - createDate.getTime(), true);
+	%>
+
+	<liferay-ui:message arguments="<%= new String[] { HtmlUtil.escape(reference.getUserName()), modifiedDateDescription } %>" key="x-modified-x-ago" />
+</liferay-frontend:vertical-card-header>
+
+<liferay-frontend:vertical-card-footer>
+	<aui:workflow-status markupView="lexicon" showIcon="<%= false %>" showLabel="<%= false %>" status="<%= reference.getStatus() %>" />
+</liferay-frontend:vertical-card-footer>

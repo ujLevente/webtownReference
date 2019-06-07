@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<beans
+	default-destroy-method="destroy"
+	default-init-method="afterPropertiesSet"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+	<bean class="hu.webtown.liferay.portlet.reference.service.impl.ReferenceLocalServiceImpl" id="hu.webtown.liferay.portlet.reference.service.ReferenceLocalService" />
+	<bean class="hu.webtown.liferay.portlet.reference.service.impl.ReferenceServiceImpl" id="hu.webtown.liferay.portlet.reference.service.ReferenceService" />
+	<bean class="hu.webtown.liferay.portlet.reference.service.persistence.impl.ReferencePersistenceImpl" id="hu.webtown.liferay.portlet.reference.service.persistence.ReferencePersistence" parent="basePersistence" />
+	<bean class="hu.webtown.liferay.portlet.reference.service.persistence.impl.ReferenceFinderImpl" id="hu.webtown.liferay.portlet.reference.service.persistence.ReferenceFinder" parent="basePersistence" />
+	<bean class="hu.webtown.liferay.portlet.reference.service.impl.ReferenceImageLocalServiceImpl" id="hu.webtown.liferay.portlet.reference.service.ReferenceImageLocalService" />
+	<bean class="hu.webtown.liferay.portlet.reference.service.persistence.impl.ReferenceImagePersistenceImpl" id="hu.webtown.liferay.portlet.reference.service.persistence.ReferenceImagePersistence" parent="basePersistence" />
+	<bean class="hu.webtown.liferay.portlet.reference.service.impl.ReferenceResourceLocalServiceImpl" id="hu.webtown.liferay.portlet.reference.service.ReferenceResourceLocalService" />
+	<bean class="hu.webtown.liferay.portlet.reference.service.persistence.impl.ReferenceResourcePersistenceImpl" id="hu.webtown.liferay.portlet.reference.service.persistence.ReferenceResourcePersistence" parent="basePersistence" />
+</beans>

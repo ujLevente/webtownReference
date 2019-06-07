@@ -1,0 +1,5 @@
+Bundle-SymbolicName: reference.dxp.list.web
+Bundle-Version: 1.0.0
+Export-Package: \
+	hu.webtown.liferay.portlet.reference.list.web.constants,\
+	hu.webtown.liferay.portlet.reference.list.web.portlet
